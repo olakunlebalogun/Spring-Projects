@@ -3,7 +3,7 @@ package com.sfgguru.controllers;
 import com.sfgguru.services.GreetingService;
 import org.springframework.stereotype.Controller;
 
-@Controller
+//@Controller
 public class MyController {
 
     private GreetingService greetingService;

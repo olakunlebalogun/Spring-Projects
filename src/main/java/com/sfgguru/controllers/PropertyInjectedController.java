@@ -5,10 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
-@Controller
+//@Controller
 public class PropertyInjectedController {
 
-    @Qualifier("propertyServiceImpl")
+//    @Qualifier("propertyServiceImpl")
     @Autowired
     public GreetingService greetingService;
 

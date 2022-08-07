@@ -5,13 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
-@Controller
+//@Controller
 public class SetterInjectedController {
 
     private GreetingService greetingService;
 
 
-    @Qualifier("setterServiceImpl")
+//    @Qualifier("setterServiceImpl")
     @Autowired
     public void setGreetingService(@Qualifier("setterServiceImpl") GreetingService greetingService) {
         this.greetingService = greetingService;
