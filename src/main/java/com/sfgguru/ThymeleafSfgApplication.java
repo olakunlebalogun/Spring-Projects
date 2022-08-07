@@ -17,6 +17,10 @@ public class ThymeleafSfgApplication {
         String greeting = myController.sayHello();
         System.out.println(greeting);
 
+        PetController petController = ctx.getBean("petController", PetController.class);
+        System.out.println("--- The Best Pet is ---");
+        System.out.println(petController.whichPetIsTheBest());
+
         I18nController i18nController = (I18nController) ctx.getBean("i18nController");
         System.out.println("------------------- I18n for EN and ES");
         System.out.println(i18nController.sayThankYou());

@@ -1,5 +1,7 @@
 package com.sfgguru.config;
 
+import com.secondpackage.PetService;
+import com.secondpackage.PetServiceFactory;
 import com.sfgguru.controllers.*;
 import com.sfgguru.services.GreetingService;
 import com.sfgguru.services.serviceimpls.*;
@@ -13,6 +15,11 @@ import org.springframework.context.annotation.Profile;
 public class JavaConfigurationType {
 
     // Controller
+
+    @Bean
+    public PetController petController(PetService petService) {
+        return new PetController(petService);
+    }
     @Bean
     public MyController myController(GreetingService greetingService) {
         return new MyController(greetingService);
@@ -47,7 +54,26 @@ public class JavaConfigurationType {
     // Greeting Service
    public GreetingService greetingService;
 
+
     // Service Implementations
+
+    @Bean
+    PetServiceFactory petServiceFactory(){
+        return new PetServiceFactory();
+    }
+
+    @Profile({"dog", "default"})
+    @Bean
+    PetService dogPetService(PetServiceFactory petServiceFactory){
+        return petServiceFactory.getPetService("dog");
+    }
+
+    @Bean
+    @Profile("cat")
+    PetService catPetService(PetServiceFactory petServiceFactory){
+        return petServiceFactory.getPetService("cat");
+    }
+
     @Bean
     public ConstructorServiceImpl constructorServiceImpl() {
         return new ConstructorServiceImpl();
